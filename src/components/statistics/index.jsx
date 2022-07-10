@@ -2,16 +2,18 @@ import { Component } from 'react';
 import { Container, ButtonListEl, ButtonList } from './statistics.styled';
 
 class Statistics extends Component {
-  static defaultProps = {
-    basicGood: 0,
-    basicNeutral: 0,
-    basicBad: 0,
-  };
+  // static defaultProps = {
+  //   basicGood: 0,
+  //   basicNeutral: 0,
+  //   basicBad: 0,
+  // };
 
   state = {
-    good: this.props.basicGood,
-    neutral: this.props.basicNeutral,
-    bad: this.props.basicBad,
+    good: 0,
+    neutral: 0,
+    bad: 0,
+    total: 0,
+    positivePercentage: 0,
   };
 
   handleGood = () => {
@@ -30,32 +32,65 @@ class Statistics extends Component {
     });
   };
 
+  handleTotal = () => {
+    this.setState(state => {
+      return { total: state.bad + state.neutral + state.good };
+    });
+  };
+
+  handlePositive = () => {
+    this.setState(state => {
+      return { positivePercent: ((state.good / state.total) * 100).toFixed(0) };
+    });
+  };
+
   render() {
     return (
       <Container>
         <ButtonList>
           <ButtonListEl>
-            <button type="button" onClick={this.handleGood}>
+            <button
+              type="button"
+              onClick={() => {
+                this.handleGood();
+                this.handleTotal();
+                this.handlePositive();
+              }}
+            >
               Good
             </button>
           </ButtonListEl>
           <ButtonListEl>
-            <button type="button" onClick={this.handleNeutral}>
+            <button
+              type="button"
+              onClick={() => {
+                this.handleNeutral();
+                this.handleTotal();
+                this.handlePositive();
+              }}
+            >
               Neutral
             </button>
           </ButtonListEl>
           <ButtonListEl>
-            <button type="button" onClick={this.handleBad}>
+            <button
+              type="button"
+              onClick={() => {
+                this.handleBad();
+                this.handleTotal();
+                this.handlePositive();
+              }}
+            >
               Bad
             </button>
           </ButtonListEl>
         </ButtonList>
         <h2>Statistics</h2>
-        <span>Good: {this.state.good}</span>
-        <br />
-        <span>Neutral: {this.state.neutral}</span>
-        <br />
-        <span>Bad: {this.state.bad}</span>
+        <p>Good: {this.state.good}</p>
+        <p>Neutral: {this.state.neutral}</p>
+        <p>Bad: {this.state.bad}</p>
+        <p>Total: {this.state.total}</p>
+        <p>Positive feedback: {this.state.positivePercentage}%</p>
       </Container>
     );
   }
