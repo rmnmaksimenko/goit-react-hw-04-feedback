@@ -1,2 +1,2 @@
-const FeedbackOptions = 0;
+function FeedbackOptions({ options, onLeaveFeedback }) {}
 export default FeedbackOptions;

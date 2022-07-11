@@ -2,12 +2,6 @@ import { Component } from 'react';
 import { Container, ButtonListEl, ButtonList } from './statistics.styled';
 
 class Statistics extends Component {
-  // static defaultProps = {
-  //   basicGood: 0,
-  //   basicNeutral: 0,
-  //   basicBad: 0,
-  // };
-
   state = {
     good: 0,
     neutral: 0,
