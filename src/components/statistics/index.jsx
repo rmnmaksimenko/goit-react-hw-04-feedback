@@ -40,7 +40,9 @@ class Statistics extends Component {
 
   handlePositive = () => {
     this.setState(state => {
-      return { positivePercent: ((state.good / state.total) * 100).toFixed(0) };
+      return {
+        positivePercentage: ((state.good / state.total) * 100).toFixed(0),
+      };
     });
   };
 
