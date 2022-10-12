@@ -35,7 +35,7 @@ export function App() {
 
   const countPositive = () => Math.round((good / countTotal()) * 100);
 
-  const options = [GOOD_STR, NEUTRAL_STR, BAD_STR];
+  const options = Object.keys({ good, neutral, bad });
 
   return (
     <Container>
