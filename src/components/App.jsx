@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import FeedbackOptions from './feedbackoptions';
 import Statistics from './statistics';
 import Section from './section';
@@ -19,13 +18,13 @@ export function App() {
   const handleClick = option => {
     switch (option) {
       case GOOD_STR:
-        setGood(good + 1);
+        setGood(r => r + 1);
         break;
       case NEUTRAL_STR:
-        setNeutral(neutral + 1);
+        setNeutral(r => r + 1);
         break;
       case BAD_STR:
-        setBad(bad + 1);
+        setBad(r => r + 1);
         break;
       default:
         break;
